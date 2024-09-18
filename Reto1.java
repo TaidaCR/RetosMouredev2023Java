@@ -74,7 +74,7 @@ public class Reto1 {
             } else {
                     for (int lp = 0; lp < msg.length(); lp++) {
                         char c = msg.toLowerCase().charAt(lp);
-                        String cString=String.valueOf(lp).toLowerCase();
+                        String cString=String.valueOf(c).toLowerCase();
                         if (!leetDictionary.containsKey(cString)){
                             msgLeet+=c;
                         } else{
@@ -89,7 +89,6 @@ public class Reto1 {
         
     }
     public static void main(String[] args) {
-
         System.out.println(translate()); 
     }
 }
