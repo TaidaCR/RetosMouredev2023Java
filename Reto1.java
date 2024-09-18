@@ -4,7 +4,6 @@ import java.util.Map;
 import java.util.HashMap;
 
 /*
-
 # Reto #1: EL "LENGUAJE HACKER"
 #### Dificultad: Fácil | Publicación: 02/01/23 | Corrección: 09/01/23
 
@@ -17,7 +16,10 @@ import java.util.HashMap;
  */
 
 public class Reto1 {
-    public static void main(String[] args) {
+
+    private static Scanner scanner = new Scanner(System.in);
+
+    public static String translate(){
 
         Map <String, String> leetDictionary=new HashMap<>();
 
@@ -59,49 +61,37 @@ public class Reto1 {
         leetDictionary.put("0", "o");
         leetDictionary.put(" ", " ");
 
-        Scanner scanner = new Scanner(System.in);
+        System.out.println("Introduce un mensaje: ");
+        String msg=scanner.nextLine();
 
-        System.out.println("Introduce una palabra: ");
-        String palabra = scanner.nextLine();
-
-        int i =1;
-        int y=0;
-        
         boolean seguirBucle=true;
+        String msgLeet="";
+        
         while (seguirBucle){
-            //validador si está vacío
-            if(palabra.isEmpty()){
+            if (msg.isEmpty()){
                 System.out.println("Introduce una palabra válida: ");
-                palabra = scanner.nextLine();
-                seguirBucle=true;
+                    msg = scanner.nextLine();
+            } else {
+                    for (int lp = 0; lp < msg.length(); lp++) {
+                        char c = msg.toLowerCase().charAt(lp);
+                        String cString=String.valueOf(lp).toLowerCase();
+                        if (!leetDictionary.containsKey(cString)){
+                            msgLeet+=c;
+                        } else{
+                            String ll=leetDictionary.get(cString);
+                            msgLeet+=ll;
+                        }
+                    }
+                    seguirBucle=false;
             }
-            else{
-                int x=palabra.length()+1;
-                while (i<x){ //TAMBIEN POSIBLE CON UN FOR
-                    //ir iterando, primera letra, segunda, aumentando el índice
-                    String letra = palabra.substring(y,i).toLowerCase();
-                    String output="";
-
-                    //OPCION1 --> CON OPERADOR TERNARIO
-                    output = (!letra.matches("[a-z0-9]") ? letra : leetDictionary.get(letra));
-
-                    //OPCION2 --> CON IF/ELSE
-                    //if(!letra.matches("[a-z]")){
-                    //    System.out.print(letra);
-                    //}else{
-                    //    String letraImp=leetDictionary.get(letra);
-                    //    System.out.print(letraImp);
-                    //}
-
-                    System.out.print(output);
-                    i++;
-                    y++;
-                }
-                seguirBucle=false;
-            }
-        } 
-    scanner.close();
+        }
+        return msgLeet;
+        
     }
-    
+    public static void main(String[] args) {
+
+        System.out.println(translate()); 
+    }
 }
+
 
