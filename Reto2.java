@@ -54,20 +54,20 @@ public class Reto2 {
         while (r){
             System.out.println("AUMENTAR MARCADOR: Introduce 1/2 para jugador 1/2: ");
             try{
-                int punto= scanner.nextInt();
+                int point= scanner.nextInt();
                 //variable del segundo bucle
                 boolean r2=true;
                 while (r2) {
-                    if (punto!=1&&punto!=2){
+                    if (point!=1&&point!=2){
                         System.out.println("Tienes que introducir un número válido: 1 o 2");
-                        punto= scanner.nextInt();
+                        point= scanner.nextInt();
                     }else{
                         r2=false;
                     }
                 }
                 //OPCION 1 PARA SUMAR
                 int puntos=0;
-                puntos=(punto==1)?m1++:m2++;
+                puntos=(point==1)?m1++:m2++;
 
                 //OPCION 2 PARA SUMAR PUNTOS
                 /*
